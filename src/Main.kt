@@ -1,8 +1,11 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import kotlin.random.Random
+import kotlin.system.measureTimeMillis
 fun main()
 {
+    // Measure the execution time of the entire process
+    val totalTime = measureTimeMillis {
     // Generate a random Roman numeral
     val randomRomanNumeral = generateRandomRomanNumeral()
 
@@ -12,23 +15,26 @@ fun main()
     // Print the results
     println("Random Roman Numeral: $randomRomanNumeral")
     println("Converted Number: $convertedNumber")
+}
+    // Print the total execution time
+    println("Total Execution For randomRomanNumeralandconvertedNumber Time: $totalTime in milliseconds")
 
+    val totalTime1 = measureTimeMillis {
+        // Generate a random integer between 1 and 2899
+        val randomNumber = Random.nextInt(1, 2900)
 
-    // Generate a random integer between 1 and 2899
-    val randomNumber = Random.nextInt(1, 2900)
+        // Convert the random integer to Roman numeral
+        val romanNumeral = convertToRoman(randomNumber)
 
-    // Convert the random integer to Roman numeral
-    val romanNumeral = convertToRoman(randomNumber)
+        // Convert the Roman numeral back to integer
+        val convertedNumber1 = convertToInteger(romanNumeral)
 
-    // Convert the Roman numeral back to integer
-    val convertedNumber1 = convertToInteger(romanNumeral)
-
-    // Print the results
-    println("Random Number: $randomNumber")
-    println("Roman Numeral: $romanNumeral")
-    println("Converted Number: $convertedNumber1")
-
-
+        // Print the results
+        println("Random Number: $randomNumber")
+        println("Roman Numeral: $romanNumeral")
+        println("Converted Number: $convertedNumber1")
+    }
+    println("Total Execution For RandomNumberGeneratorRomanNumeral Time: $totalTime in milliseconds")
 }
 //generate the randomRomanNumeral.
 fun generateRandomRomanNumeral(): String
