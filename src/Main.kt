@@ -13,6 +13,22 @@ fun main()
     println("Random Roman Numeral: $randomRomanNumeral")
     println("Converted Number: $convertedNumber")
 
+
+    // Generate a random integer between 1 and 2899
+    val randomNumber = Random.nextInt(1, 2900)
+
+    // Convert the random integer to Roman numeral
+    val romanNumeral = convertToRoman(randomNumber)
+
+    // Convert the Roman numeral back to integer
+    val convertedNumber1 = convertToInteger(romanNumeral)
+
+    // Print the results
+    println("Random Number: $randomNumber")
+    println("Roman Numeral: $romanNumeral")
+    println("Converted Number: $convertedNumber1")
+
+
 }
 //generate the randomRomanNumeral.
 fun generateRandomRomanNumeral(): String
@@ -51,4 +67,22 @@ fun convertToInteger(romanNumeral: String): Int {
     }
 
     return result
+}
+
+//Convert to Roman
+fun convertToRoman(number: Int): String {
+    val values = intArrayOf(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1)
+    val numerals = arrayOf("M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I")
+
+    val result = StringBuilder()
+
+    var remaining = number
+    for (i in values.indices) {
+        while (remaining >= values[i]) {
+            result.append(numerals[i])
+            remaining -= values[i]
+        }
+    }
+
+    return result.toString()
 }
